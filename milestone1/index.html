@@ -8,7 +8,166 @@
 </head>
 <body>
 
-    <div id="app">{{ message }}</div>
+    <div id="app">
+        
+        <div class="background">
+
+            <div class="container">
+    
+                <!--Colonna di sinistra-->
+                <div class="left">
+    
+                    <div class="info">
+    
+                        <div class="col-left">
+    
+                            <div class="icon">
+                                <img src="./img/avatar_io.jpg" alt="">
+                            </div>
+    
+                        </div>
+                        <div class="col-right">
+                            <span><i class="fas fa-circle-notch"></i></span>
+                            <span><i class="fas fa-message"></i></span>
+                            <span><i class="fas fa-bars"></i></span>
+                        </div>
+    
+                    </div>
+    
+                    <div class="notifications">
+    
+                        <div class="col-left">
+    
+                            <i class="fas fa-bell-slash"></i>
+    
+                        </div>
+                        <div class="col-right">
+                            
+                            <h3>
+                                Ricevi notifiche di nuovi messaggi
+                            </h3>
+                            <p>
+                                <a href="#">Attiva notifiche desktop</a>
+                            </p>
+    
+                        </div>
+    
+                    </div>
+    
+                    <div class="search">
+    
+                        <div class="content">
+    
+                            <i class="fas fa-magnifying-glass"></i>
+                            <input type="text" name="search" placeholder="Cerca o inizia una nuova chat">
+    
+                        </div>
+    
+                    </div>
+    
+                    <div class="chat">
+
+                        <div
+                            class="row"
+                            v-for="contact in contacts"
+                        >
+                        
+                            <div class="col-left">
+
+                                <div class="icon">
+                                    <img :src="contact.avatar" alt="img">
+                                </div>
+
+                            </div>
+                            <div class="col-right">
+
+                                <h1>
+                                    {{ contact.name }}
+                                </h1>
+                                <p>
+                                    Lorem ipsum dolor
+                                </p>
+                                <span>16:15</span>
+                            </div>
+                        </div>
+    
+                    </div>
+    
+                </div>
+                
+    
+                <!--Colonna di destra-->
+                <div class="right">
+    
+                    <div class="contact">
+    
+                        <div class="col-left">
+    
+                            <div class="icon">
+                                <img src="./img/avatar_1.jpg" alt="">
+                            </div>
+    
+                        </div>
+                        <div class="col-right">
+    
+                            <div class="name">
+                                <h1>
+                                    Michele
+                                </h1>
+                                <p>
+                                    Ultimo accesso oggi alle 16:26
+                                </p>
+                            </div>
+    
+                            <div class="attachment">
+                                <i class="fas fa-magnifying-glass"></i>
+                                <i class="fas fa-paperclip"></i>
+                                <i class="fas fa-bars"></i>
+                            </div>
+    
+                        </div>
+    
+    
+                    </div>
+    
+                    <div class="conversation">
+    
+                        <div class="content">
+
+                            <ul>
+
+                                <li
+                                    v-for="(mex, index) in conversationArray()"
+                                    :class="{sent: isSent(index), received: isReceived(index)}"
+                                >
+                                    <p>
+                                        {{ mex.message }}
+                                    </p>
+                                </li>
+
+                            </ul>
+    
+                        </div>
+    
+                    </div>
+    
+                    <div class="message">
+    
+                        <div class="content">
+                            <i class="fas fa-face-smile"></i>
+                            <input type="text" name="message" placeholder="Scrivi un messaggio">
+                            <i class="fas fa-microphone"></i>
+                        </div>
+    
+                    </div>
+    
+                </div>
+    
+            </div>
+    
+        </div>
+
+    </div>
 
 
     <!--inclusion js-->

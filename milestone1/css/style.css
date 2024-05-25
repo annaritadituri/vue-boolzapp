@@ -1,0 +1,632 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/*MOBILE-FIRST*/
+
+/*LAYOUT*/
+
+.container {
+    height: 100vh;
+    font-family: "Lato", sans-serif;
+    font-weight: 300;
+}
+
+/*Colonna di sinistra*/
+
+/*LAYOUT*/
+
+.left {
+    display: none;
+}
+
+
+/*Colonna di destra*/
+
+/*LAYOUT*/
+
+.right {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+/*Sezione contact*/
+
+.right .contact {
+    height: 90px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.right .contact .col-left {
+    width: 90px;
+    height: 100%;
+}
+
+.right .contact .col-right {
+    width: calc(100% - 90px);
+}
+
+.right .contact .col-right .attachment {
+    display: none;
+}
+
+.right .contact .col-left .icon {
+    height: 100%;
+    text-align: center;
+}
+
+.right .contact img {
+    width: 100%;
+    height: 100%;
+}
+
+/*Sezione conversation*/
+
+.right .conversation {
+    height: calc(100% - 90px - 10%);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    overflow: scroll;
+}
+
+.right .conversation .content {
+    width: 90%;
+}
+
+.right .conversation ul {
+    list-style-type: none;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.right .conversation li {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.right .conversation .sent {
+    justify-content: end;
+}
+
+.right .conversation .received {
+    justify-content: start;
+}
+
+.right .conversation li p {
+    width: 70%;
+    position: relative;
+}
+
+.right .conversation li i {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.right .conversation li p .time {
+    position: absolute;
+    bottom: 7px;
+    right: 7px;
+}
+
+/*Sezione message*/
+
+.right .message {
+    height: 10%;
+}
+
+.right .message .content {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.right .message input {
+    width: 95%;
+    margin: auto;
+    height: 80%;
+}
+
+.right .message i {
+    display: none;
+}
+
+/*STYLE*/
+
+/*Sezione contact*/
+
+.right .contact {
+    background-color: rgb(235, 235, 235);
+}
+
+.right .contact .col-left .icon {
+    padding: 1rem;
+}
+
+.right .contact .icon img{
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.right .contact h1 {
+    font-size: 1.2rem;
+    font-weight: 400;
+}
+
+/*Sezione conversation*/
+
+.right .conversation {
+    background-image: url(../img/mine.jpg);
+}
+
+.right .conversation .content {
+    margin-top: 1.5rem;
+}
+
+.right .conversation ul li {
+    margin-bottom: 0.5rem;
+}
+
+.right .conversation ul li p {
+    padding: 1rem;
+    border-radius: 10px;
+}
+
+.right .conversation ul li p .time {
+    font-size: 0.8rem;
+    color: grey;
+}
+
+.right .conversation .sent p {
+    background-color: rgb(201, 248, 183);
+}
+
+.right .conversation .received p {
+    background-color: white;
+}
+
+.right .conversation ul li i {
+    height: 20px;
+    width: 20px;
+    color: gray;
+    font-size: 1rem;
+}
+
+/*Sezione message*/
+
+.right .message {
+    background-color: rgb(242, 235, 232);
+}
+
+.right .message input {
+    padding-left: 1rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 10px;
+}
+
+
+/*************************************************/
+
+
+/*RESPONSIVE LAYOUT*/
+
+/*TABLET*/
+
+@media screen and (min-width: 768px) {
+
+    /*LAYOUT*/
+
+    .container {
+        display: flex;
+    }
+
+    /*Colonna di sinistra*/
+
+    /*LAYOUT*/
+    
+    .left {
+        display: block;
+        width: 90px;
+    }
+
+    .left .col-left img {
+        width: 100%;
+        height: 100%;
+    }
+
+    /*Sezione info*/
+
+    .left .info {
+        display: block;
+        height: 90px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .left .info .col-left {
+        display: block;
+    }
+
+    .left .info .col-right {
+        display: none;
+    }
+
+    .left .info .icon {
+        height: 100%;
+    }
+
+    /*Sezione notifications*/
+
+    .left .notifications {
+        display: none;
+    }
+
+    /*Sezione search*/
+
+    .left .search {
+        display: none;
+    }
+
+    /*Sezione chat*/
+
+    .left .chat {
+        display: block;
+        width: 100%;
+        height: calc(100% - 90px);
+        overflow: scroll;
+    }
+
+    .left .chat .col-left {
+        width: 100%;
+    }
+
+    .left .chat .col-right {
+        display: none;
+    }
+
+    /*STYLE*/
+
+    /*Sezione info*/
+
+    .left .info {
+        background-color: rgb(235, 235, 235);
+    }
+
+    .left .info .col-left .icon {
+        padding: 1rem;
+    }
+
+    .left .info .col-left img {
+        border-radius: 50%;
+    }
+
+
+    /*Sezione chat*/
+
+    .left .chat .row {
+        border-bottom: 1px solid lightgray;
+    }
+
+    .left .chat .col-left .icon {
+        padding: 1rem;
+    }
+
+    .left .chat .col-left .icon img {
+        border-radius: 50%;
+    }
+
+
+    /*Colonna di destra*/
+
+    /*LAYOUT*/
+
+    .right {
+        width: calc(100% - 90px);
+    }
+
+    /*Sezione contact*/
+
+    .right .contact .col-right {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .right .contact .col-right .attachment {
+        display: block;
+    }
+
+    /*Sezione message*/
+
+    .right .message i {
+        display: block;
+        font-size: 2rem;
+        color: rgb(105, 105, 105);
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+
+
+    /*STYLE*/
+
+    /*Sezione contact*/
+
+    .right .contact .col-right .attachment > * {
+        color: rgb(148, 148, 148);
+        padding-right: 1rem;
+        font-size: 1.5rem;
+    }
+
+}
+
+
+/*DESKTOP*/
+
+@media screen and (min-width: 1024px) {
+
+    /*LAYOUT*/
+    
+    .background {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+    }
+    
+    .background:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 20%;
+        z-index: 1;
+    }
+    
+    .container {
+        height: 90vh;
+        width: 80vw;
+        display: flex;
+        z-index: 3;
+    }
+
+    /*STYLE*/
+
+    .background {
+        background-color: rgb(224, 224, 213);
+    }
+
+    .background:before {
+        background: rgb(0, 139, 125);
+    }
+
+
+    /*Colonna di sinistra*/
+
+    /*LAYOUT*/
+
+    .left {
+        display: block;
+        width: 30%;
+    }
+
+    /*Sezione info*/
+
+    .left .info {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        height: 90px;
+    }
+
+    .left .info .col-left {
+        width: 90px;
+    }
+
+    .left .info .col-right {
+        display: block;
+    }
+
+
+    /*Sezione notifications*/
+
+    .left .notifications {
+        display: block;
+        height: 10%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .left .notifications .col-left {
+        width: 20%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .left .notifications .col-right {
+        width: 80%;
+    }
+
+    /*Sezione search*/
+
+    .left .search {
+        display: block;
+        height: 5%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .left .search .content {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 95%;
+        height: 100%;
+    }
+
+    .left .search input {
+        width: 95%;
+        height: 80%;
+    }
+
+    .left .search i {
+        height: 80%;
+    }
+
+    /*Sezione chat*/
+
+    .left .chat {
+        display: block;
+        height: 75%;
+        overflow: scroll;
+    }
+
+    .left .chat .row {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        height: 100px;
+        position: relative;
+    }
+
+    .left .chat .col-left {
+        width: 20%;
+    }
+
+    .left .chat .col-left img {
+        width: 100%;
+    }
+    
+    .left .chat .col-right {
+        display: block;
+        width: 80%;
+    }
+
+    .left .chat .col-right span {
+        position: absolute;
+        right: 10px;
+        top: 30px;
+    }
+
+
+    /*STYLE*/
+
+    .left {
+        background-color: white;
+    }
+
+    /*Sezione info*/
+
+    .left .info .col-right i {
+        font-size: 1.5rem;
+        color:  rgb(148, 148, 148);
+        padding-right: 1rem;
+    }
+
+    /*Sezione notifications*/
+
+    .left .notifications {
+        background-color: rgb(122, 213, 249);
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+    }
+
+    .left .notifications .col-left {
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }
+
+    .left .notifications .col-left i {
+        color: rgb(122, 213, 249);
+        font-size: 2rem;
+        background-color: white;
+        border-radius: 50%;
+        padding: 1rem 0.8rem 1rem 0.8rem;
+    }
+
+    .left .notifications .col-right h3 {
+        font-weight: 300;
+    }
+
+    .left .notifications .col-right a:visited {
+        color: gray;
+    }
+
+    /*Sezione search*/
+
+    .left .search {
+        background-color: rgb(244, 244, 244);
+    }
+
+    .left .search i {
+        background-color: white;
+        font-size: 1.5rem;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        color:  rgb(148, 148, 148);
+        padding-top: 0.3rem;
+    }
+
+    .left .search input {
+        border: none;
+    }
+
+    /*Sezione chat*/
+
+    .left .chat .col-left .icon {
+        padding: 0.5rem;
+    }
+
+    .left .chat .col-right h1 {
+        font-size: 1.2rem;
+        font-weight: 400;
+    }
+
+    .left .chat .col-right p {
+        color: rgb(179, 179, 179);
+    }
+
+    .left .chat .col-right span {
+        color: rgb(179, 179, 179);
+        font-size: 0.8rem;
+    }
+
+    /**/
+
+    /*Colonna di destra*/
+
+    /*LAYOUT*/
+
+    .right {
+        width: 70%;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+    }
+
+    /*STYLE*/
+
+}
+
+
+
