@@ -187,12 +187,12 @@ const { createApp } = Vue
       },
 
       isSent(position) {
-          if(this.conversation[position].status === 'sent') return true;
+        if(this.conversation[position].status === 'sent') return true;
       },
 
       isReceived(position) {
         if(this.conversation[position].status === 'received') return true;
-      }
+      },
 
     }
   }).mount('#app')

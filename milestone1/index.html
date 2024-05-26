@@ -8,7 +8,7 @@
 </head>
 <body>
 
-    <div id="app">
+    <div id="app" v-cloak>
         
         <div class="background">
 
@@ -69,7 +69,8 @@
 
                         <div
                             class="row"
-                            v-for="contact in contacts"
+                            v-for="(contact,index) in contacts"
+                            @click="chooseChat(index)"
                         >
                         
                             <div class="col-left">
@@ -100,7 +101,7 @@
                 <div class="right">
     
                     <div class="contact">
-    
+
                         <div class="col-left">
     
                             <div class="icon">
@@ -131,7 +132,7 @@
                     </div>
     
                     <div class="conversation">
-    
+
                         <div class="content">
 
                             <ul>

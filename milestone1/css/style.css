@@ -1,3 +1,7 @@
+[v-cloak] {
+    display: none;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -101,7 +105,6 @@
 }
 
 .right .conversation li p {
-    width: 70%;
     position: relative;
 }
 
@@ -403,16 +406,17 @@
         width: 80vw;
         display: flex;
         z-index: 3;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     }
 
     /*STYLE*/
 
     .background {
-        background-color: rgb(224, 224, 213);
+        background-color: rgb(240, 242, 245);
     }
 
     .background:before {
-        background: rgb(0, 139, 125);
+        background: rgb(54, 168, 131);
     }
 
 
