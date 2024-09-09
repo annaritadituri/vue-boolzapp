@@ -34,7 +34,7 @@ const { createApp } = Vue
           {
               name: 'Fabio',
               avatar: './img/avatar_2.jpg',
-              visible: true,
+              visible: false,
               messages: [
                   {
                       date: '20/03/2020 16:30:00',
@@ -56,7 +56,7 @@ const { createApp } = Vue
           {
               name: 'Samuele',
               avatar: './img/avatar_3.jpg',
-              visible: true,
+              visible: false,
               messages: [
                   {
                       date: '28/03/2020 10:10:40',
@@ -78,7 +78,7 @@ const { createApp } = Vue
           {
               name: 'Alessandro B.',
               avatar: './img/avatar_4.jpg',
-              visible: true,
+              visible: false,
               messages: [
                   {
                       date: '10/01/2020 15:30:55',
@@ -95,7 +95,7 @@ const { createApp } = Vue
           {
               name: 'Alessandro L.',
               avatar: './img/avatar_5.jpg',
-              visible: true,
+              visible: false,
               messages: [
                   {
                       date: '10/01/2020 15:30:55',
@@ -112,7 +112,7 @@ const { createApp } = Vue
           {
               name: 'Claudia',
               avatar: './img/avatar_6.jpg',
-              visible: true,
+              visible: false,
               messages: [
                   {
                       date: '10/01/2020 15:30:55',
@@ -134,7 +134,7 @@ const { createApp } = Vue
           {
               name: 'Federico',
               avatar: './img/avatar_7.jpg',
-              visible: true,
+              visible: false,
               messages: [
                   {
                       date: '10/01/2020 15:30:55',
@@ -151,7 +151,7 @@ const { createApp } = Vue
           {
               name: 'Davide',
               avatar: './img/avatar_8.jpg',
-              visible: true,
+              visible: false,
               messages: [
                   {
                       date: '10/01/2020 15:30:55',
@@ -171,28 +171,102 @@ const { createApp } = Vue
               ],
           }
       ],
-      conversation: [],
+      currentChat: 0,
+      newMessage: null,
+      receivedMessage: null,
+      searchedContact: "",
+      filteredArray: [],
+      isOpen: false,
+      isClose: true,
       
       }
     },
 
     methods: {
 
-      conversationArray() {
-
-        this.conversation = this.contacts[0].messages;
-        //console.log(this.conversation);
-        return this.conversation;
-        
-      },
-
       isSent(position) {
-        if(this.conversation[position].status === 'sent') return true;
+          if(this.contacts[this.currentChat].messages[position].status === 'sent') return true;
       },
 
       isReceived(position) {
-        if(this.conversation[position].status === 'received') return true;
+        if(this.contacts[this.currentChat].messages[position].status === 'received') return true;
       },
 
-    }
+      chooseChat(position){
+
+        if(this.searchedContact !== "") {
+
+            let objKeys = Object.keys(this.filteredArray[position]);
+            let rightPosition = objKeys;
+            this.currentChat = parseInt(rightPosition[0]);
+    
+        } else {
+            this.filteredArray = [];
+            this.currentChat = position;
+        }
+        
+      },
+
+      sendMessage() {
+
+        var DateTime = luxon.DateTime;
+        let dt = DateTime.now();
+
+        let justSent =
+        {
+            date: `${dt.day}/${dt.month}/${dt.year} ${dt.hour}:${dt.minute}:${dt.second}`,
+            message: this.newMessage,
+            status: 'sent',
+        }
+        this.contacts[this.currentChat].messages.push(justSent);
+        this.newMessage = "";
+
+        this.receivedMessage = setTimeout(this.receiveMessage, 1000);
+
+      },
+
+      receiveMessage() {
+        
+        var DateTime = luxon.DateTime;
+        let dt = DateTime.now();
+
+        let justReceived =
+        {
+            date: `${dt.day}/${dt.month}/${dt.year} ${dt.hour}:${dt.minute}:${dt.second}`,
+            message: 'ok',
+            status: 'received',
+        }
+        this.contacts[this.currentChat].messages.push(justReceived);
+        console.log(this.conversation);
+
+      },
+
+      searchChat() {
+
+        if(this.searchedContact !== "") {
+            return this.contacts.filter((contact, index) => {
+
+                if(contact.name.includes(this.searchedContact) === true) {
+                    let objEntries = [[index, contact.name]];
+                    let newObject = Object.fromEntries(objEntries);
+                    this.filteredArray.push(newObject);
+                    //console.log(this.filteredArray);
+                }
+                return contact.name.includes(this.searchedContact);
+
+            });
+        } else {
+            this.filteredArray = [];
+            return this.contacts;
+        }
+
+      },
+
+      openMessageInfo(position) {
+        if(this.isOpen === true) return this.isOpen = false;
+        if(this.isOpen === false) return this.isOpen = true;
+      }
+
+    },
+
   }).mount('#app')
