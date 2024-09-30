@@ -275,6 +275,8 @@ const { createApp } = Vue
         let DateTime = luxon.DateTime;
         let now = DateTime.now();
         console.log(now);
+
+        /*
         let dataProva = this.contacts[this.currentChat].messages[0].date;
         //let dataProva = "29/09/2024 00:00:01";
         //console.log(dataProva);
@@ -292,6 +294,7 @@ const { createApp } = Vue
         } else {
             console.log(formatoProva.weekdayLong);
         }
+        */
 
 
         /////////////////////////
