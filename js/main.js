@@ -212,6 +212,7 @@ const { createApp } = Vue
 
         let DateTime = luxon.DateTime;
         let dt = DateTime.now();
+        console.log(dt);
 
         let justSent =
         {
@@ -221,6 +222,8 @@ const { createApp } = Vue
         }
         this.contacts[this.currentChat].messages.push(justSent);
         this.newMessage = "";
+
+        this.dates[this.currentChat].push(dt);
 
         this.receivedMessage = setTimeout(this.receiveMessage, 1000);
 
@@ -238,7 +241,9 @@ const { createApp } = Vue
             status: 'received',
         }
         this.contacts[this.currentChat].messages.push(justReceived);
-        console.log(this.conversation);
+
+        this.dates[this.currentChat].push(dt);
+        console.log(this.dates);
 
       },
 
@@ -263,7 +268,7 @@ const { createApp } = Vue
 
       },
 
-      openMessageInfo(position) {
+      openMessageMenu(position) {
         if(this.isOpen === true) return this.isOpen = false;
         if(this.isOpen === false) return this.isOpen = true;
       }
