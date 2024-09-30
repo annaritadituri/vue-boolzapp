@@ -140,7 +140,7 @@
                                     </div>
                                     <div class="hour">
                                         <span>
-                                            {{ contact.messages.at(-1).date}}
+                                            {{ this.dates[index].at(-1).toLocaleString() }}
                                         </span>
                                     </div>
                                    
@@ -175,7 +175,7 @@
                                     {{this.contacts[this.currentChat].name }}
                                 </h1>
                                 <p>
-                                    {{ this.contacts[this.currentChat].messages.at(-1).date}}
+                                    ultimo accesso il {{ this.dates[this.currentChat].at(-1).toLocaleString() }}
                                 </p>
                             </div>
 
@@ -216,7 +216,7 @@
                                                 <button>Message info</button>
                                                 <button>Delete message</button>
                                             </div>
-                                            <span class="time">{{mex.date}}</span>
+                                            <span class="time">{{ this.dates[this.currentChat][index].hour }}:{{ this.dates[this.currentChat][index].minute }}</span>
                                         </div>
                                     </div>
                                     

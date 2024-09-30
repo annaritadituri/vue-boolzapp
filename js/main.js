@@ -171,6 +171,7 @@ const { createApp } = Vue
               ],
           }
       ],
+      dates: [],
       currentChat: 0,
       newMessage: null,
       receivedMessage: null,
@@ -209,7 +210,7 @@ const { createApp } = Vue
 
       sendMessage() {
 
-        var DateTime = luxon.DateTime;
+        let DateTime = luxon.DateTime;
         let dt = DateTime.now();
 
         let justSent =
@@ -227,7 +228,7 @@ const { createApp } = Vue
 
       receiveMessage() {
         
-        var DateTime = luxon.DateTime;
+        let DateTime = luxon.DateTime;
         let dt = DateTime.now();
 
         let justReceived =
@@ -268,5 +269,45 @@ const { createApp } = Vue
       }
 
     },
+
+    created() {
+
+        let DateTime = luxon.DateTime;
+        let now = DateTime.now();
+        console.log(now);
+        let dataProva = this.contacts[this.currentChat].messages[0].date;
+        //let dataProva = "29/09/2024 00:00:01";
+        //console.log(dataProva);
+        let formatoProva = DateTime.fromFormat(dataProva, 'dd/MM/yyyy HH:mm:ss');
+        console.log(formatoProva.weekdayLong);
+        console.log(formatoProva.minute);
+        console.log(formatoProva.hour);
+        console.log(formatoProva.toLocaleString());
+        console.log(now.plus({ days: -1 }).toLocaleString());
+        console.log(now.plus({ days: -6 }).toLocaleString());
+        if(formatoProva.toLocaleString() < now.plus({ days: -6 }).toLocaleString()) {
+            console.log(formatoProva.toLocaleString());
+        } else if(formatoProva.toLocaleString() === now.plus({ days: -1 }).toLocaleString()) {
+            console.log("ieri");
+        } else {
+            console.log(formatoProva.weekdayLong);
+        }
+
+
+        /////////////////////////
+        this.contacts.forEach((contact, index) => {
+            //console.log(contact.name);
+            this.dates.push(new Array);
+            let numContact = index;
+            contact.messages.forEach(message => {
+                //console.log(numContact);
+                let formatDate = DateTime.fromFormat(message.date, 'dd/MM/yyyy HH:mm:ss');
+                this.dates[numContact].push(formatDate);
+                //console.log(message.date);
+            });
+        });
+        console.log(this.dates);
+        console.log(this.dates[this.currentChat]);
+    }
 
   }).mount('#app')
