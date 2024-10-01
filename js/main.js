@@ -177,8 +177,7 @@ const { createApp } = Vue
       receivedMessage: null,
       searchedContact: "",
       filteredArray: [],
-      isOpen: false,
-      isClose: true,
+      openMenuIndex: null
       
       }
     },
@@ -243,7 +242,7 @@ const { createApp } = Vue
         this.contacts[this.currentChat].messages.push(justReceived);
 
         this.dates[this.currentChat].push(dt);
-        console.log(this.dates);
+        //console.log(this.dates);
 
       },
 
@@ -268,18 +267,21 @@ const { createApp } = Vue
 
       },
 
-      openMessageMenu(position) {
-        if(this.isOpen === true) return this.isOpen = false;
-        if(this.isOpen === false) return this.isOpen = true;
-      }
+      openMessageMenu(index) {
+        if (this.openMenuIndex === index) {
+          this.openMenuIndex = null;
+        } else {
+          this.openMenuIndex = index;
+        }
+      },
 
     },
 
     created() {
 
         let DateTime = luxon.DateTime;
-        let now = DateTime.now();
-        console.log(now);
+        //let now = DateTime.now();
+        //console.log(now);
 
         /*
         let dataProva = this.contacts[this.currentChat].messages[0].date;
@@ -314,8 +316,8 @@ const { createApp } = Vue
                 //console.log(message.date);
             });
         });
-        console.log(this.dates);
-        console.log(this.dates[this.currentChat]);
+        //console.log(this.dates);
+        //console.log(this.dates[this.currentChat]);
     }
 
   }).mount('#app')

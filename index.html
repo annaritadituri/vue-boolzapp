@@ -96,13 +96,13 @@
                                 
                                 <h5>
                                     Attiva le notifiche
-                                    <i class="fa-solid fa-angle-right"></i>
                                 </h5>
                                 <p>
                                     Ricevi notifiche di nuovi messaggi
                                 </p>
                                 <p>
                                     <a href="#">Attiva notifiche desktop</a>
+                                    <i class="fa-solid fa-angle-right"></i>
                                 </p>
 
                                 <span>
@@ -200,6 +200,7 @@
 
                                 <li
                                     v-for="(mex, index) in this.contacts[this.currentChat].messages"
+                                    :key="index"
                                     :class="{sent: isSent(index), received: isReceived(index)}"
                                 >
                                     <div class="content-li">
@@ -208,11 +209,13 @@
                                         </div>
                                         <div class="right-li">
                                             <button
-                                                @click="openMessageInfo(index)"
+                                                @click="openMessageMenu(index)"
                                             >
                                                 <i class="fas fa-chevron-down icon"></i>
                                             </button>
-                                            <div :class="{message_info: isOpen === false, display_menu: isOpen === true}">
+                                            <div
+                                                v-if="openMenuIndex === index" class="display_menu"
+                                            >
                                                 <button>Message info</button>
                                                 <button>Delete message</button>
                                             </div>
